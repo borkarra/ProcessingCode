@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.ra.processingcode.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:text="0.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_toRightOf="@+id/textView8"
+        android:layout_toEndOf="@+id/textView6"
+        android:id="@+id/curSpeedTextView"
+        android:textSize="16sp"
+        android:layout_marginLeft="4sp" />
+
+    <TextView
+        android:text="km/h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/curSpeedTextView"
+        android:id="@+id/curSpeedUnitTextView"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/curSpeedTextView"
+        android:layout_marginLeft="4sp" />
+
+    <TextView
+        android:text="0.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avgSpeedTextView"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/textView8"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_toRightOf="@+id/textView8"
+        android:layout_toEndOf="@+id/textView8"
+        android:layout_marginLeft="4sp" />
+
+    <TextView
+        android:text="km/h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avgSpeedUnitTextView"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/avgSpeedTextView"
+        android:layout_alignBottom="@+id/avgSpeedTextView"
+        android:layout_toRightOf="@+id/avgSpeedTextView"
+        android:layout_toEndOf="@+id/avgSpeedTextView"
+        android:layout_marginLeft="4sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/accelXTextView"
+        android:textSize="16sp"
+        android:hint="x axis acceleration"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/accelYTextView"
+        android:textSize="16sp"
+        android:hint="y axis acceleration"
+        android:layout_below="@+id/accelXTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Enter current acceleration for each axis in m/s^2:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Enter current cadence (rpm):"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/accelZTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Current speed:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:hint="decimal rpm"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_marginLeft="4sp" />
+
+    <TextView
+        android:text="Distance traveled:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textView"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/accelZTextView"
+        android:textSize="16sp"
+        android:hint="z axis acceleration"
+        android:layout_below="@+id/accelYTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Average speed:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/distBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="0.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:id="@+id/distTextView"
+        android:layout_marginLeft="4sp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:text="km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/distTextView"
+        android:layout_toRightOf="@+id/distTextView"
+        android:layout_toEndOf="@+id/distTextView"
+        android:id="@+id/distUnitTextView"
+        android:textSize="16sp"
+        android:layout_marginLeft="4sp" />
+
+    <Button
+        android:text="Update Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/distBtn"
+        android:background="#e52828"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/editText"
+        android:layout_alignLeft="@+id/avgSpeedTextView"
+        android:layout_alignStart="@+id/avgSpeedTextView" />
+
+</RelativeLayout>
