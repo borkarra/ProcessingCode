@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.lang.Math;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     EditText accelXTextView;
     EditText accelYTextView;
     EditText accelZTextView;
+    EditText curCadenceTextView;
+    TextView avgCadenceTextView;
     TextView distTextView;
     TextView curSpeedTextView;
     TextView avgSpeedTextView;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     float curSpeedZ = 0;
     float curSpeed = 0;
     float avgSpeed = 0;
+    float avgCadence = 0;
     float distTraveled = 0;
     int updates = 1; // number of times data has been updated, used for averaging.
     float step = 1; // time between each measurement in seconds
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         accelXTextView = (EditText) findViewById(R.id.accelXTextView);
         accelYTextView = (EditText) findViewById(R.id.accelYTextView);
         accelZTextView = (EditText) findViewById(R.id.accelZTextView);
+        curCadenceTextView = (EditText) findViewById(R.id.curCadenceTextView);
+        avgCadenceTextView = (TextView) findViewById(R.id.avgCadenceTextView);
         curSpeedTextView = (TextView) findViewById(R.id.curSpeedTextView);
         avgSpeedTextView = (TextView) findViewById(R.id.avgSpeedTextView);
         distTextView = (TextView) findViewById(R.id.distTextView);
@@ -58,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 float accelerationX = Float.parseFloat(accelXTextView.getText().toString());
                 float accelerationY = Float.parseFloat(accelYTextView.getText().toString());
                 float accelerationZ = Float.parseFloat(accelZTextView.getText().toString());
+                float curCadence = Float.parseFloat(curCadenceTextView.getText().toString());
                 curSpeedX += accelerationX*step; //in m/s
                 curSpeedY += accelerationY*step;
                 curSpeedZ += accelerationZ*step;
@@ -65,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 curSpeed = (float) Math.sqrt(Math.pow(curSpeedX,2) + Math.pow(curSpeedY, 2) + Math.pow(curSpeedZ, 2))*msTokmh; // in kmh
                 distTraveled += (((oldSpeed + curSpeed)/2)*step)/3600; //speed in kmh, step in sec so convert (WILL CHANGE)
                 avgSpeed = (avgSpeed*updates+curSpeed)/(updates+1);
+                avgCadence = (avgCadence*updates+curCadence)/(updates+1);
+                avgCadenceTextView.setText(Float.toString(avgCadence));
                 if (!empirical) {
                     curSpeedTextView.setText(Float.toString(curSpeed));
                     avgSpeedTextView.setText(Float.toString(avgSpeed));

@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/curCadenceTextView"
         android:hint="decimal rpm"
         android:textSize="16sp"
         android:layout_alignBaseline="@+id/textView5"
@@ -195,8 +195,43 @@
         android:id="@+id/distBtn"
         android:background="#e52828"
         android:textColor="#ffffff"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/curCadenceTextView"
         android:layout_alignLeft="@+id/avgSpeedTextView"
         android:layout_alignStart="@+id/avgSpeedTextView" />
+
+    <TextView
+        android:text="Average cadence:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textView3"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:text="0.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avgCadenceTextView"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toRightOf="@+id/curSpeedTextView"
+        android:layout_toEndOf="@+id/curSpeedTextView"
+        android:layout_marginLeft="4sp" />
+
+    <TextView
+        android:text="rpm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rpm"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/avgCadenceTextView"
+        android:layout_alignBottom="@+id/avgCadenceTextView"
+        android:layout_toRightOf="@+id/avgCadenceTextView"
+        android:layout_marginLeft="4sp" />
 
 </RelativeLayout>
