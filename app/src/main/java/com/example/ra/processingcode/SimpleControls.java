@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -19,6 +20,7 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -58,7 +60,31 @@ public class SimpleControls extends Activity {
 
 	final private static char[] hexArray = { '0', '1', '2', '3', '4', '5', '6',
 			'7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
 
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(SimpleControls.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 	private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
 		@Override
@@ -117,7 +143,9 @@ public class SimpleControls extends Activity {
 
 		digitalInBtn = (ToggleButton) findViewById(R.id.DIntBtn);
 
-		connectBtn = (Button) findViewById(R.id.connect);
+        ActivityCompat.requestPermissions(SimpleControls.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+        connectBtn = (Button) findViewById(R.id.connect);
 		connectBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
