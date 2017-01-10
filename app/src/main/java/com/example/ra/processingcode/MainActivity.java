@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.lang.Math;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     float curSpeedY = 0;
     float curSpeedZ = 0;
     float curSpeed = 0;
+    float oldSpeed = 0;
     float avgSpeed = 0;
     float avgCadence = 0;
     float distTraveled = 0;
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 curSpeedX += accelerationX*step; //in m/s
                 curSpeedY += accelerationY*step;
                 curSpeedZ += accelerationZ*step;
-                float oldSpeed = curSpeed;
+                oldSpeed = curSpeed;
                 curSpeed = (float) Math.sqrt(Math.pow(curSpeedX,2) + Math.pow(curSpeedY, 2) + Math.pow(curSpeedZ, 2))*msTokmh; // in kmh
                 distTraveled += (((oldSpeed + curSpeed)/2)*step)/3600; //speed in kmh, step in sec so convert (WILL CHANGE)
                 avgSpeed = (avgSpeed*updates+curSpeed)/(updates+1);
@@ -126,8 +125,13 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.reset) {
-            curSpeed = 0;
-            //distTextView.setText(Float.toString(curDist));
+            avgSpeed = 0;
+            avgSpeedTextView.setText(Float.toString(avgSpeed));
+            distTraveled = 0;
+            distTextView.setText(Float.toString(distTraveled));
+            avgCadence = 0;
+            avgCadenceTextView.setText(Float.toString(avgCadence));
+            updates = 1;
         }
         return super.onOptionsItemSelected(item);
     }
